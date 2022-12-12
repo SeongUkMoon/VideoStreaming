@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+    <!-- DASH-AVC/265 reference implementation -->
+    
+
+    
+
+    <html>
+    <head>
+        
+        <title>Moon Jamm Streaming</title>
+
+        <script src="dash.all.js"></script>
+        <script>
+            // setup the video element and attach it to the Dash player
+            function setupVideo() {
+              var url = "https://video-aaea.streaming.media.azure.net/5b19071a-7b11-47c1-b60b-9a489ecd66fb/bubble.ism/manifest(format=mpd-time-cmaf)";
+              var context = new Dash.di.DashContext();
+              var player = new MediaPlayer(context);
+                              player.startup();
+                              player.attachView(document.querySelector("#videoplayer"));
+                              player.attachSource(url);
+            }
+        </script> 
+
+    </head>
+
+    <body><!-- onload="setupVideo()">-->
+        <script type="text/javascript" src="server.js"></script>
+
+        <h1>Moon Jamm Streaming</h1>
+        <video id="videoplayer" controls></video>
+
+        <main>
+            <h1>Vanilla JavaScript App</h1>
+            <p>Loading content from the API: <b id="name">...</b></p>
+            </main>
+
+        <!--<script>
+            (async function() {
+                const { text } = await( await fetch(`./api/message`)).json();
+                document.querySelector('#name').textContent = text;
+            }());
+            </script>-->
+
+    </body>
+</html>
+
+    
+
+<style>
+    video {
+      width: 80%;
+      height: 80%;
+    }
+</style>
